@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviones</title>
+</head>
+<body class="container">
+    <div class="text-center p-2">
+        <h2>Listado de aviones</h2>
+    </div>
+    <div class=" text-center p-3">
+        <a class="btn btn-primary" [routerLink]="['/nuevoAvion']">Nuevo</a>   
+    </div>
+
+    <div class="table-responsive " style="height: 500px;">
+        <table class="table table-bordered table-sm text-center">
+            <thead class="bg-primary text-white">
+                <tr>
+                <td>#</td>
+                <td>Código</td>
+                <td>Marca</td>
+                <td>Modelo</td>
+                <td>Capacidad</td> 
+                <td>Opciones</td> 
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of listaAviones; let i = index" class="text-dark">
+                <tr>
+                    <td><strong>{{i+1}}</strong></td>
+                    <td>{{item.codigo}}</td>
+                    <td>{{item.marca}}</td>
+                    <td>{{item.modelo}}</td>
+                    <td>{{item.capacidad}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-success " [routerLink]="['/editarAvion/', item.avionId]">Editar</a>
+                        <button class="btn btn-danger m-1" (click)="eliminar(item.avionId)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
