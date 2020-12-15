@@ -1,7 +1,7 @@
-export interface Avion {
-    avionId : number,
+export interface Piloto {
+    pilotoId : number,
     codigo :string,
-    marca :string,
-    modelo :string,
-    capacidad : string 
+    nombre :string,
+    apellido :string,
+    horasVuelo : string 
 }

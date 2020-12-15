@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PilotosService } from 'src/app/Servicios/pilotos.service';
-import { Piloto } from 'src/app/Modelos/Piloto';
+import { Vuelo } from 'src/app/Modelos/Vuelo';
+import { VuelosService } from 'src/app/Servicios/vuelos.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-lista-pilotos',
-  templateUrl: './lista-pilotos.component.html',
-  styleUrls: ['./lista-pilotos.component.css']
+  selector: 'app-lista-vuelos',
+  templateUrl: './lista-vuelos.component.html',
+  styleUrls: ['./lista-vuelos.component.css']
 })
-export class ListaPilotosComponent implements OnInit {
+export class ListaVuelosComponent implements OnInit {
 
-  constructor(private servicio:PilotosService,private rutas: Router) { }
-  listaPilotos : Piloto[]=[];
+  constructor(private servicio:VuelosService,private rutas: Router) { }
+  listaVuelos : Vuelo[]=[];
   ngOnInit(): void {
-    this.cargarPilotos();
+    this.cargarVuelos();
   }
 
- async cargarPilotos(){
+ async cargarVuelos(){
     await this.servicio.listar().subscribe(
-      datos=>this.listaPilotos=datos    
+      datos=>this.listaVuelos=datos    
     );
 
   }
@@ -29,7 +29,7 @@ export class ListaPilotosComponent implements OnInit {
   }
   async eliminar(id){
     Swal.fire({
-      title: 'Pilotos',
+      title: 'Vuelos',
       text: "Esta seguro que desea eliminar el registro",
       icon: 'warning',
       showCancelButton: true,
@@ -48,14 +48,15 @@ export class ListaPilotosComponent implements OnInit {
   eliminarRegistro(id){
     this.servicio.eliminar(id)
     .subscribe(datos => {
-      Swal.fire("Pilotos","Registro eliminado con éxito","success");
-      this.cargarPilotos();
+      Swal.fire("Vuelos","Registro eliminado con éxito","success");
+      this.cargarVuelos();
     }, error => {
       console.log(error);
-      Swal.fire("Pilotos",error,"error");
-      this.rutas.navigate(['/Pilotos']);
+      Swal.fire("Vuelos",error,"error");
+      this.rutas.navigate(['/vuelos']);
     }
     );
   }
+
 
 }

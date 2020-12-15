@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListaPilotosComponent } from './Pilotos/lista-pilotos/lista-pilotos.component';
 import { NuevoPilotoComponent } from './Pilotos/nuevo-piloto/nuevo-piloto.component';
+import { ListaVuelosComponent } from './Vuelos/lista-vuelos/lista-vuelos.component';
+import { NuevoVueloComponent } from './Vuelos/nuevo-vuelo/nuevo-vuelo.component';
+import { ListaTripulacionesComponent } from './Tripulaciones/lista-tripulaciones/lista-tripulaciones.component';
+import { NuevaTripulacionComponent } from './Tripulaciones/nueva-tripulacion/nueva-tripulacion.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { NuevoPilotoComponent } from './Pilotos/nuevo-piloto/nuevo-piloto.compon
     ListaComponent,
     NuevoComponent,
     ListaPilotosComponent,
-    NuevoPilotoComponent
+    NuevoPilotoComponent,
+    ListaVuelosComponent,
+    NuevoVueloComponent,
+    ListaTripulacionesComponent,
+    NuevaTripulacionComponent
   ],
   imports: [
     BrowserModule,

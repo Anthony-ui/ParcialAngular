@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "PruebaParcial"
+  "defaultProject": "PruebaParcial",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviones</title>
+</head>
+<body class="container">
+    <div class="text-center p-2">
+        <h2>Listado de Vuelos</h2>
+    </div>
+    <div class=" text-center p-3">
+        <a class="btn btn-primary" [routerLink]="['/nuevoVuelo']">Nuevo</a>   
+    </div>
+
+    <div class="table-responsive " style="height: 500px;">
+        <table class="table table-bordered table-sm text-center">
+            <thead class="bg-primary text-white">
+                <tr>
+                <td>#</td>
+                <td>Código</td>
+                <td>Ciudad Origen</td>
+                <td>Fecha Salida</td>
+                <td>Ciudad Destino</td>
+                <td>Fecha Llegada</td>
+                <td>Piloto</td>
+                <td>Avion</td>
+                <td>Opciones</td> 
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of listaVuelos; let i = index" class="text-dark">
+                <tr>
+                    <td><strong>{{i+1}}</strong></td>
+                    <td>{{item.codigo}}</td>
+                    <td>{{item.ciudadOrigen}}</td>
+                    <td>{{item.fechaSalida}}</td>
+                    <td>{{item.ciudadDestino}}</td>
+                    <td>{{item.fechaLlegada}}</td>
+                    <td>{{item.pilotos.nombre}} {{item.pilotos.apellido}}</td>
+                    <td>{{item.aviones.codigo}} {{item.aviones.marca}} {{item.aviones.modelo}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-success " [routerLink]="['/editarVuelo/', item.vueloId]">Editar</a>
+                        <button class="btn btn-danger m-1" (click)="eliminar(item.vueloId)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="container">
+    <div class="form-row col-sm col-sm-6 pt-3" style="margin-left: auto;margin-right: auto;">
+        <h3 class="text-center" *ngIf="vueloId==0">Nuevo Vuelo</h3>
+        <h3 class="text-center" *ngIf="vueloId>0">Editar Vuelo</h3>
+
+        <form novalidate (ngSubmit)="guardar()" [formGroup]="formulario">
+
+        <div class="form-group">
+            <label >Código</label>
+            <input class="form-control" name="codigo" formControlName="codigo">   
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Fecha Salida</label>
+            <input class="form-control" name="fechaSalida" formControlName="fechaSalida" type="datetime-local">  
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>  
+        </div>
+        <div class="form-group">
+            <label >Ciudad Origen</label>
+            <input class="form-control" name="ciudadOrigen" formControlName="ciudadOrigen">     
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Fecha Llegada</label>
+            <input class="form-control" name="fechaLlegada" formControlName="fechaLlegada" type="datetime-local">  
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>  
+        </div>
+        <div class="form-group">
+            <label >Ciudad Destino</label>
+            <input class="form-control" name="ciudadDestino" formControlName="ciudadDestino">     
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Piloto</label>
+            <select class="form-control" name="pilotoId" formControlName="pilotoId">
+                <option value="">Seleccione</option>
+                <option *ngFor="let piloto of listaPilotos;"  value="{{piloto.pilotoId}}">{{piloto.nombre}} {{piloto.apellido}}</option>
+            </select>
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Avion</label>
+            <select class="form-control" name="avionId" formControlName="avionId">
+                <option value="">Seleccione</option>
+                <option *ngFor="let avion of listaAviones;" value="{{avion.avionId}}">{{avion.codigo}} {{avion.marca}} {{avion.modelo}}</option>
+            </select>
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+
+        <div class="text-center pt-3">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary m-1" [disabled]="!formulario.valid">Guardar</button>
+                <button class="btn btn-secondary" [routerLink]="['/vuelos']">Cancelar</button>
+              </div>
+        </div>
+        </form>
+    </div>
+
+
+</body>
+</html>

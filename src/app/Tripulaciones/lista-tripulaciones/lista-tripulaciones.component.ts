@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PilotosService } from 'src/app/Servicios/pilotos.service';
-import { Piloto } from 'src/app/Modelos/Piloto';
+import { Tripulacion } from 'src/app/Modelos/Tripulacion';
+import { TripulacionesService } from 'src/app/Servicios/tripulaciones.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-lista-pilotos',
-  templateUrl: './lista-pilotos.component.html',
-  styleUrls: ['./lista-pilotos.component.css']
+  selector: 'app-lista-tripulaciones',
+  templateUrl: './lista-tripulaciones.component.html',
+  styleUrls: ['./lista-tripulaciones.component.css']
 })
-export class ListaPilotosComponent implements OnInit {
+export class ListaTripulacionesComponent implements OnInit {
 
-  constructor(private servicio:PilotosService,private rutas: Router) { }
-  listaPilotos : Piloto[]=[];
+  constructor(private servicio:TripulacionesService,private rutas: Router) { }
+  listaTripulaciones : Tripulacion[]=[];
   ngOnInit(): void {
-    this.cargarPilotos();
+    this.cargarTripulaciones();
   }
 
- async cargarPilotos(){
+ async cargarTripulaciones(){
     await this.servicio.listar().subscribe(
-      datos=>this.listaPilotos=datos    
+      datos=>this.listaTripulaciones=datos    
     );
 
   }
@@ -29,7 +29,7 @@ export class ListaPilotosComponent implements OnInit {
   }
   async eliminar(id){
     Swal.fire({
-      title: 'Pilotos',
+      title: 'Tripulaciones',
       text: "Esta seguro que desea eliminar el registro",
       icon: 'warning',
       showCancelButton: true,
@@ -48,12 +48,12 @@ export class ListaPilotosComponent implements OnInit {
   eliminarRegistro(id){
     this.servicio.eliminar(id)
     .subscribe(datos => {
-      Swal.fire("Pilotos","Registro eliminado con éxito","success");
-      this.cargarPilotos();
+      Swal.fire("Tripulaciones","Registro eliminado con éxito","success");
+      this.cargarTripulaciones();
     }, error => {
       console.log(error);
-      Swal.fire("Pilotos",error,"error");
-      this.rutas.navigate(['/Pilotos']);
+      Swal.fire("Tripulaciones",error,"error");
+      this.rutas.navigate(['/tripulaciones']);
     }
     );
   }
