@@ -12,6 +12,13 @@ import { ListaVuelosComponent } from './Vuelos/lista-vuelos/lista-vuelos.compone
 import { NuevoVueloComponent } from './Vuelos/nuevo-vuelo/nuevo-vuelo.component';
 import { ListaTripulacionesComponent } from './Tripulaciones/lista-tripulaciones/lista-tripulaciones.component';
 import { NuevaTripulacionComponent } from './Tripulaciones/nueva-tripulacion/nueva-tripulacion.component';
+import { ListaMiembroComponent } from './Miembro/lista-miembro/lista-miembro.component';
+import { NuevoMiembroComponent } from './Miembro/nuevo-miembro/nuevo-miembro.component';
+import { ListaBaseComponent } from './Base/lista-base/lista-base.component';
+import { NuevaBaseComponent } from './Base/nueva-base/nueva-base.component';
+import { ListaMantenimientosComponent } from './Manteminientos/lista-mantenimientos/lista-mantenimientos.component';
+import { NuevoMantenimientoComponent } from './Manteminientos/nuevo-mantenimiento/nuevo-mantenimiento.component';
+import { ListaReporteComponent } from './Reportes/lista-reporte/lista-reporte.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,14 @@ import { NuevaTripulacionComponent } from './Tripulaciones/nueva-tripulacion/nue
     ListaVuelosComponent,
     NuevoVueloComponent,
     ListaTripulacionesComponent,
-    NuevaTripulacionComponent
+    NuevaTripulacionComponent,
+    ListaMiembroComponent,
+    NuevoMiembroComponent,
+    ListaBaseComponent,
+    NuevaBaseComponent,
+    ListaMantenimientosComponent,
+    NuevoMantenimientoComponent,
+    ListaReporteComponent
   ],
   imports: [
     BrowserModule,

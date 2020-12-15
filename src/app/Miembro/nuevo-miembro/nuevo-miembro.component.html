@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="container">
+    <div class="form-row col-sm col-sm-6 pt-3" style="margin-left: auto;margin-right: auto;">
+        <h3 class="text-center" *ngIf="miembroId==0">Nuevo Miembro</h3>
+        <h3 class="text-center" *ngIf="miembroId>0">Editar Miembro</h3>
+
+        <form novalidate  (ngSubmit)="guardar()"  [formGroup]="formulario">
+
+        <div class="form-group">
+            <label >Cedula</label>
+            <input class="form-control" name="cedula" formControlName="cedula">   
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Nombre</label>
+            <input class="form-control" name="nombre" formControlName="nombre">  
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>  
+        </div>
+        <div class="form-group">
+            <label >Apellido</label>
+            <input class="form-control" name="apellido" formControlName="apellido">     
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Telefono</label>
+            <input class="form-control" name="telefono" formControlName="telefono" type="number" step="1" min=1>    
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+        <div class="form-group">
+            <label >Ciudad</label>
+            <input class="form-control" name="ciudad" formControlName="ciudad"  step="1" min=1>    
+            <span *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)"  class="text-danger" >El campo es requerido</span>
+        </div>
+
+        <div class="text-center pt-3">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary m-1" [disabled]="!formulario.valid">Guardar</button>
+                <button class="btn btn-secondary" [routerLink]="['/aviones']">Cancelar</button>
+              </div>
+        </div>
+        </form>
+    </div>
+
+
+</body>
+</html>
+

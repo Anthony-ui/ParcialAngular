@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviones</title>
+</head>
+<body class="container">
+    <div class="text-center p-2">
+        <h2>Listado de Mantenimientos</h2>
+    </div>
+    <div class=" text-center p-3">
+        <a class="btn btn-primary" [routerLink]="['/nuevoMantenimiento']">Nuevo</a>   
+    </div>
+
+    <div class="table-responsive " style="height: 500px;">
+        <table class="table table-bordered table-sm text-center">
+            <thead class="bg-primary text-white">
+                <tr>
+                <td>#</td>
+                <td>Fecha</td>
+                <td>Detalle</td>
+                <td>Base</td>
+                <td>Avion</td>
+                <td>Opciones</td> 
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of listaMantenimientos; let i = index" class="text-dark">
+                <tr>
+                    <td><strong>{{i+1}}</strong></td>
+                    <td>{{item.fecha}}</td>
+                    <td>{{item.detalle}}</td>
+                    <td>{{item.bases.nombre}}</td>
+                    <td>{{item.aviones.codgio}} {{item.aviones.marca}} </td>
+                     <td class="text-center">
+                        <a class="btn btn-success " [routerLink]="['/editarMantenimiento/', item.mantenimientoId]">Editar</a>
+                        <button class="btn btn-danger m-1" (click)="eliminar(item.mantenimientoId)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

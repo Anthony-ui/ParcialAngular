@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miembros</title>
+</head>
+<body class="container">
+    <div class="text-center p-2">
+        <h2>Listado de Miembros</h2>
+    </div>
+    <div class=" text-center p-3">
+        <a class="btn btn-primary" [routerLink]="['/nuevoMiembro']">Nuevo</a>
+    </div>
+
+    <div class="table-responsive " style="height: 500px;">
+        <table class="table table-bordered table-sm text-center">
+            <thead class="bg-primary text-white">
+                <tr>
+                <td>#</td>
+                <td>Cedula</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Telefono</td> 
+                <td>Ciudad</td> 
+                <td>Opciones</td> 
+                </tr>
+            </thead>
+            <tbody class="text-dark"  *ngFor="let item of listaMiembros; let i = index"  >
+                <tr>
+                    <td><strong>{{i+1}}</strong></td>
+                    <td>{{item.cedula}}</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.ciudad}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-success" [routerLink]="['/editarMiembro/', item.miembroId]">Editar</a>
+                        <button class="btn btn-danger m-1" (click)="eliminar(item.miembroId)"  >Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -34,4 +34,9 @@ export class VuelosService {
     .set('codigo', codigo);
    return this.http.get(this.apiURL+'/repetido',{responseType: 'text',params});
 }
+
+listarReporte():Observable<Vuelo[]>{
+ return this.http.get<Vuelo[]>(this.apiURL+'/reporte');
+}
+
 }
